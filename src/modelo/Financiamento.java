@@ -1,4 +1,4 @@
-package pacote1;
+package modelo;
 
 public class Financiamento {
     private double valorImovel;

@@ -1,8 +1,8 @@
 package app;
 
 import java.util.Scanner;
-import pacote1.Financiamento;
-import pacote2.InterfaceUsuario;
+import modelo.*;
+import util.*;
 
 public class Main {
     public static Scanner input = new Scanner(System.in);
