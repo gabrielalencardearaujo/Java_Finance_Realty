@@ -22,13 +22,13 @@ public class Main {
     }
 
     public static void startApp(){
-        InterfaceUsuario user = new InterfaceUsuario();
+        InterfaceUsuario user = new util.InterfaceUsuario();
 
         double valorImovel = user.inputValorImovel();
         int prazoFinanciamento = user.inputPrazoFinanciamento();
         double taxaJuros = user.inputTaxaJuros();
 
-        Financiamento financiamento = new Financiamento(valorImovel, prazoFinanciamento, taxaJuros);
+        Financiamento financiamento = new modelo.Financiamento(valorImovel, prazoFinanciamento, taxaJuros);
 
         user.resultFinanciamento(financiamento.calcPagamentoMensal(), financiamento.totalPagamento());
     }

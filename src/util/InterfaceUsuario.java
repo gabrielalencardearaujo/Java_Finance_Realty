@@ -6,22 +6,59 @@ public class InterfaceUsuario {
     private Scanner inputUser = new Scanner(System.in);
 
     public double inputValorImovel(){
-        System.out.print("Digite o valor do imovel: ");
-        return inputUser.nextDouble();
+        double valorImovel;
+
+        while(true){
+            System.out.print("Digite o valor do imovel: ");
+            valorImovel = inputUser.nextDouble();
+            
+            if(valorImovel <= 0) {
+                System.out.println("Valor do imovel nao pode ser menor ou zero.");
+                continue;
+            } else {
+                break;
+            }
+        }
+
+        return valorImovel;
     }
 
     public int inputPrazoFinanciamento(){
-        System.out.print("Digite o prazo de Financiamento em anos: ");
-        return inputUser.nextInt();
+        int prazoFinanciamento;
+
+        while(true) {
+            System.out.print("Digite o prazo de Financiamento em anos: ");
+            prazoFinanciamento =  inputUser.nextInt();
+
+            if(prazoFinanciamento < 0) {
+                System.out.println("O prazo nao deve ser menor ou igual a zero.");
+                continue;
+            } else {
+                break;
+            }
+        } 
+
+        return prazoFinanciamento;
     }
 
     public double inputTaxaJuros(){
-        System.out.print("Digite a taxa de juros anual: ");
-        return inputUser.nextDouble();
+        double taxaJuros;
+        while(true){
+            System.out.print("Digite a taxa de juros anual: ");
+            taxaJuros = inputUser.nextDouble();
+
+            if(taxaJuros < 0) {
+                System.out.println("A taxa de juros nao pode ser menor que zero.");
+                continue;
+            } 
+            
+            return taxaJuros;
+        }
+
     }
 
     public static void resultFinanciamento(double pagamentoMensal, double pagamentoTotal){
-        System.out.println("O pagamento mensal do imovel: " + pagamentoMensal);
+        System.out.println("O pagamento anual do imovel: " + pagamentoMensal);
         System.out.println("O pagamento total do imovel: " + pagamentoTotal);
     }
 }
