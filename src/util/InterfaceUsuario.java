@@ -13,7 +13,7 @@ public class InterfaceUsuario {
             valorImovel = inputUser.nextDouble();
             
             if(valorImovel <= 0) {
-                System.out.println("Valor do imovel nao pode ser menor ou zero.");
+                System.out.println("Valor do imovel nao pode ser menor ou igual a zero.\n");
                 continue;
             } 
 
@@ -29,10 +29,10 @@ public class InterfaceUsuario {
             prazoFinanciamento =  inputUser.nextInt();
 
             if(prazoFinanciamento < 0) {
-                System.out.println("O prazo nao deve ser menor ou igual a zero.");
+                System.out.println("O prazo nao deve ser menor ou igual a zero.\n");
                 continue;
             } 
-            
+
             return prazoFinanciamento;
         } 
     }
@@ -44,13 +44,12 @@ public class InterfaceUsuario {
             taxaJuros = inputUser.nextDouble();
 
             if(taxaJuros < 0) {
-                System.out.println("A taxa de juros nao pode ser menor que zero.");
+                System.out.println("A taxa de juros nao pode ser menor que zero.\n");
                 continue;
             } 
 
             return taxaJuros;
         }
-
     }
 
     public static void resultFinanciamento(double pagamentoMensal, double pagamentoTotal){
