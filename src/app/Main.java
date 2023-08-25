@@ -46,6 +46,5 @@ public class Main {
         Financiamento financiamento = new modelo.Financiamento(valorImovel, prazoFinanciamento, taxaJuros);
 
         return financiamento;
-        // InterfaceUsuario.resultFinanciamento(financiamento.calcPagamentoMensal(), financiamento.totalPagamento());
     }
 }
