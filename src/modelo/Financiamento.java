@@ -4,6 +4,7 @@ public class Financiamento {
     private double valorImovel;
     private int prazoFinanciamento;
     private double taxaJurosAnual;
+    private double amortizacao;
 
     public Financiamento(double valorImovel, int prazoFinanciamento, double taxaJurosAnual){
         this.valorImovel = valorImovel;

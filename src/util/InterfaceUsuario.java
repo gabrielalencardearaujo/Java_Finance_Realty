@@ -39,17 +39,17 @@ public class InterfaceUsuario {
 
     public double inputTaxaJuros(){
         double taxaJuros;
-        while(true){
-            System.out.print("Digite a taxa de juros anual: ");
-            taxaJuros = inputUser.nextDouble();
 
-            if(taxaJuros < 0) {
-                System.out.println("A taxa de juros nao pode ser menor que zero.\n");
-                continue;
-            } 
+        System.out.print("Digite a taxa de juros anual: ");
+        taxaJuros = inputUser.nextDouble();
+        
+        if(taxaJuros < 0) {
+            System.out.println("A taxa de juros nao pode ser menor que zero.\n");
+            this.inputTaxaJuros();
+        } 
 
-            return taxaJuros;
-        }
+        return taxaJuros;
+        
     }
 
     public static void resultFinanciamento(double pagamentoMensal, double pagamentoTotal){

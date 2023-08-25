@@ -30,6 +30,6 @@ public class Main {
 
         Financiamento financiamento = new modelo.Financiamento(valorImovel, prazoFinanciamento, taxaJuros);
 
-        user.resultFinanciamento(financiamento.calcPagamentoMensal(), financiamento.totalPagamento());
+        InterfaceUsuario.resultFinanciamento(financiamento.calcPagamentoMensal(), financiamento.totalPagamento());
     }
 }
