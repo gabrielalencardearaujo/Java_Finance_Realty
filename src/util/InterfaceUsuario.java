@@ -47,13 +47,11 @@ public class InterfaceUsuario implements InterUsuario {
             System.out.println("A taxa de juros nao pode ser menor que zero.\n");
             this.inputTaxaJuros();
         } 
-
         return taxaJuros;
-        
     }
 
     public static void resultFinanciamento(double pagamentoMensal, double pagamentoTotal){
-        System.out.println("O pagamento mensal do imovel: " + pagamentoMensal);
+        System.out.println("\n O pagamento mensal do imovel: " + pagamentoMensal);
         System.out.println("O pagamento total do imovel: " + pagamentoTotal);
     }
 }
