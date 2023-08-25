@@ -2,7 +2,7 @@ package util;
 
 import java.util.Scanner;
 
-public class InterfaceUsuario {
+public class InterfaceUsuario implements InterUsuario {
     private Scanner inputUser = new Scanner(System.in);
 
     public double inputValorImovel(){
@@ -53,7 +53,7 @@ public class InterfaceUsuario {
     }
 
     public static void resultFinanciamento(double pagamentoMensal, double pagamentoTotal){
-        System.out.println("O pagamento anual do imovel: " + pagamentoMensal);
+        System.out.println("O pagamento mensal do imovel: " + pagamentoMensal);
         System.out.println("O pagamento total do imovel: " + pagamentoTotal);
     }
 }

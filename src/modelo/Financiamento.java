@@ -3,25 +3,36 @@ package modelo;
 public class Financiamento {
     private double valorImovel;
     private int prazoFinanciamento;
-    private double taxaJurosAnual;
+    private double valorFinanciamento;
     private double amortizacao;
+    private double taxaJurosMensal;
 
+    //Contructor
     public Financiamento(double valorImovel, int prazoFinanciamento, double taxaJurosAnual){
         this.valorImovel = valorImovel;
         this.prazoFinanciamento = prazoFinanciamento;
-        this.taxaJurosAnual = taxaJurosAnual;
+        this.taxaJurosMensal = taxaJurosAnual / 12;
     }
 
+    //Metodos Personalizados
     public double calcPagamentoMensal(){
-        return (this.getValorImovel() / this.getPrazoFinanciamento()) * (1 + (this.getTaxaJurosAnual() / 12));
+        this.valorFinanciamento = this.getValorImovel() *  this.getTaxaJurosMensal();
+        return (this.getValorImovel() + this.valorFinanciamento) / this.getPrazoFinanciamento();
     }
 
     public double totalPagamento(){
         return this.calcPagamentoMensal() * this.getPrazoFinanciamento();
     }
 
-    public double getTaxaJurosAnual() {
-        return this.taxaJurosAnual;
+    public double getValorAmortizacao() {
+        this.amortizacao = this.getValorImovel() / this.getPrazoFinanciamento();
+        return this.amortizacao;
+    }
+
+
+    //Metodos Especiais
+    public double getTaxaJurosMensal() {
+        return this.taxaJurosMensal;
     }
 
     public double getValorImovel() {
@@ -37,7 +48,7 @@ public class Financiamento {
     }
 
     public void setTaxaJurosAnual(double taxaJurosAnual) {
-        this.taxaJurosAnual = taxaJurosAnual;
+        this.taxaJurosMensal = taxaJurosAnual;
     }
 
     public void setValorImovel(double valorImovel) {
