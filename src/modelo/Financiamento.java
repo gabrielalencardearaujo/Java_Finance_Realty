@@ -1,11 +1,8 @@
 package modelo;
 
 public class Financiamento implements InterFinanciamento {
-    private double valorImovel;
-    private int prazoFinanciamento;
-    private double valorFinanciamento;
-    private double amortizacao;
-    private double taxaJurosMensal;
+    protected double valorImovel, valorFinanciamento, amortizacao, taxaJurosMensal, pagamentoMensal;
+    protected int prazoFinanciamento;
 
     //Contructor
     public Financiamento(double valorImovel, int prazoFinanciamento, double taxaJurosAnual){
@@ -17,7 +14,8 @@ public class Financiamento implements InterFinanciamento {
     //Metodos Personalizados
     public double calcPagamentoMensal(){
         this.valorFinanciamento = this.getValorImovel() *  this.getTaxaJurosMensal();
-        return (this.getValorImovel() + this.valorFinanciamento) / this.getPrazoFinanciamento();
+        this.setPagamentoMensal((this.getValorImovel() + this.valorFinanciamento) / this.getPrazoFinanciamento());
+        return this.getPagamentoMensal();
     }
 
     public double totalPagamento(){
@@ -53,5 +51,13 @@ public class Financiamento implements InterFinanciamento {
 
     public void setValorImovel(double valorImovel) {
         this.valorImovel = valorImovel;
+    }
+
+    public void setPagamentoMensal(double novoPagamento) {
+        this.pagamentoMensal = novoPagamento;
+    }
+
+    public double getPagamentoMensal() {
+        return this.pagamentoMensal;
     }
 }

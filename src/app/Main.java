@@ -12,7 +12,7 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Bem vindo ao Sistema de financiamento de Imoveis: \n");
         String controlador;
-        
+
         do {
             System.out.println("Insira os dados abaixo \n");
             Financiamento fin = startApp();
