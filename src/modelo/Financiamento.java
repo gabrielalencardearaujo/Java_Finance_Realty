@@ -46,7 +46,7 @@ public class Financiamento implements InterFinanciamento {
     }
 
     public void setTaxaJurosAnual(double taxaJurosAnual) {
-        this.taxaJurosMensal = taxaJurosAnual;
+        this.taxaJurosMensal = taxaJurosAnual / 12;
     }
 
     public void setValorImovel(double valorImovel) {
