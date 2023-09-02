@@ -39,6 +39,10 @@ public class Main {
     public static Financiamento startApp(){
         InterfaceUsuario user = new util.InterfaceUsuario();
 
+        System.out.println("Que tipo de financiamento deseja realizar? Temos 3 tipos de financiamento: ");
+        System.out.println("\nCASA - APARTAMENTO - TERRENO");
+
+        
         double valorImovel = user.inputValorImovel();
         int prazoFinanciamento = user.inputPrazoFinanciamento();
         double taxaJuros = user.inputTaxaJuros();
