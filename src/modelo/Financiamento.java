@@ -54,7 +54,9 @@ public class Financiamento implements InterFinanciamento {
     }
 
     public void setPagamentoMensal(double novoPagamento) {
-        this.pagamentoMensal = novoPagamento;
+        if(novoPagamento > 0) {
+            this.pagamentoMensal = novoPagamento;
+        }
     }
 
     public double getPagamentoMensal() {
