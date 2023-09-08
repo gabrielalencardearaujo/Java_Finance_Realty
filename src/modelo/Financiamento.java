@@ -15,9 +15,9 @@ public class Financiamento implements InterFinanciamento {
 
     // Metodos Personalizados
     public double calcPagamentoMensal() {
-        this.valorFinanciamento = this.getValorImovel() * this.getTaxaJurosMensal();
+        this.valorFinanciamento = this.getValorImovel() * this.getTaxaJurosAnual();
         this.setPagamentoMensal((this.getValorImovel() / this.getPrazoFinanciamento()) / (1 + (this.getTaxaJurosAnual() / 12)));
-        
+
         return this.getPagamentoMensal();
     }
 
@@ -80,5 +80,12 @@ public class Financiamento implements InterFinanciamento {
 
     public int getMensalidadeAtual() {
         return this.mensalidadeAtual;
+    }
+
+    public double getValorFinanciamento() {
+        return this.valorFinanciamento;
+    }
+    public void setValorFinanciamento(double novoValor) {
+        this.valorFinanciamento = novoValor;
     }
 }
