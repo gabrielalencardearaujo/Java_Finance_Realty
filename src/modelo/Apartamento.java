@@ -8,7 +8,7 @@ public class Apartamento extends Financiamento {
   }
 
   private void recalculoTaxaAnual() {
-    double novaTaxaRecalculada = (this.getTaxaJurosMensal() * 12) - (1 / (this.getPrazoFinanciamento() * 12));
+    double novaTaxaRecalculada = (this.getTaxaJurosMensal() * 12) - (1 / (this.getMensalidadeAtual() * 12));
     this.setTaxaJurosAnual(novaTaxaRecalculada);
   }
 }

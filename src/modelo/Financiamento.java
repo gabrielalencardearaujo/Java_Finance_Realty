@@ -1,29 +1,36 @@
 package modelo;
 
 public class Financiamento implements InterFinanciamento {
-    protected double valorImovel, valorFinanciamento, amortizacao, taxaJurosMensal, pagamentoMensal;
-    protected int prazoFinanciamento;
+    protected double valorImovel, valorFinanciamento, amortizacao, taxaJurosMensal, pagamentoMensal, taxaJurosAnual;
+    protected int prazoFinanciamento, mensalidadeAtual;
 
-    //Contructor
-    public Financiamento(double valorImovel, int prazoFinanciamento, double taxaJurosAnual){
+    // Contructor
+    public Financiamento(double valorImovel, int prazoFinanciamento, double taxaJurosAnual) {
         this.valorImovel = valorImovel;
-        this.prazoFinanciamento = prazoFinanciamento * 12;
+        this.prazoFinanciamento = prazoFinanciamento;
+        this.mensalidadeAtual = 1;
+        this.taxaJurosAnual = taxaJurosAnual;
         this.taxaJurosMensal = taxaJurosAnual / 12;
     }
 
-    //Metodos Personalizados
-    public double calcPagamentoMensal(){
-        this.valorFinanciamento = this.getValorImovel() *  this.getTaxaJurosMensal();
-        this.setPagamentoMensal((this.getValorImovel() + this.valorFinanciamento) / this.getPrazoFinanciamento());
+    // Metodos Personalizados
+    public double calcPagamentoMensal() {
+        this.valorFinanciamento = this.getValorImovel() * this.getTaxaJurosMensal();
+        this.setPagamentoMensal((this.getValorImovel() / this.getPrazoFinanciamento()) / (1 + (this.getTaxaJurosAnual() / 12)));
+        
         return this.getPagamentoMensal();
     }
 
-    public double totalPagamento(){
+    public double totalPagamento() {
         return this.calcPagamentoMensal() * this.getPrazoFinanciamento();
     }
 
+    public void pagarMensalidade() {
+        this.mensalidadeAtual++;
+        System.out.println("Mensalidade " + this.getMensalidadeAtual() + "no valor de " + this.getPagamentoMensal() + "paga com sucesso n");
+    }
 
-    //Metodos Especiais
+    // Metodos Especiais
     public double getValorAmortizacao() {
         this.amortizacao = this.getValorImovel() / this.getPrazoFinanciamento();
         return this.amortizacao;
@@ -45,7 +52,7 @@ public class Financiamento implements InterFinanciamento {
         this.prazoFinanciamento = prazoFinanciamento;
     }
 
-    public void setTaxaJurosAnual(double taxaJurosAnual) {
+    public void setTaxaJurosMensal(double taxaJurosAnual) {
         this.taxaJurosMensal = taxaJurosAnual / 12;
     }
 
@@ -54,12 +61,24 @@ public class Financiamento implements InterFinanciamento {
     }
 
     public void setPagamentoMensal(double novoPagamento) {
-        if(novoPagamento > 0) {
+        if (novoPagamento > 0) {
             this.pagamentoMensal = novoPagamento;
         }
     }
 
     public double getPagamentoMensal() {
         return this.pagamentoMensal;
+    }
+
+    public double getTaxaJurosAnual() {
+        return this.taxaJurosAnual;
+    }
+
+    public void setTaxaJurosAnual(double novaTaxa) {
+        this.taxaJurosAnual = novaTaxa;
+    }
+
+    public int getMensalidadeAtual() {
+        return this.mensalidadeAtual;
     }
 }
