@@ -8,6 +8,7 @@ public class Casa extends Financiamento {
 
   public Casa(double valorImovel, int prazoFinanciamento, double taxaJurosAnual) {
     super(valorImovel, prazoFinanciamento, taxaJurosAnual);
+    this.desconto = 0f;
     this.descontoParcela();
   }
 
@@ -21,11 +22,11 @@ public class Casa extends Financiamento {
 
       if (controlador.toUpperCase() == "S") {
         System.out.println("Quanto é o desconto: (ate 100 reais) ");
-        desconto = input.nextFloat();
+        this.desconto = input.nextFloat();
       }
 
-      if (desconto < 100 && desconto > 0) {
-        this.setPagamentoMensal(this.getPagamentoMensal() - desconto);
+      if (this.desconto < 100 && this.desconto > 0) {
+        this.setPagamentoMensal(this.getPagamentoMensal() - this.desconto);
         break;
       } else {
         System.out.println("O desconto deve ser de ate 100 reais!");
