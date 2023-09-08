@@ -17,13 +17,14 @@ public class Casa extends Financiamento {
 
     while (true) {
 
-      System.out.print("\nDeseja aplicar algum desconto nas mensalidades do financiamento da casa? S/N");
-      controlador = input.next();
+      System.out.print("\nDeseja aplicar algum desconto nas mensalidades do financiamento da casa? S/N  ");
+      controlador = input.next().toUpperCase();
 
-      if (controlador.toUpperCase() == "S") {
+      if (controlador.equals("S")) {
         System.out.println("Quanto é o desconto: (ate 100 reais) ");
         this.desconto = input.nextFloat();
-      }
+      } else return;
+      
 
       if (this.desconto < 100 && this.desconto > 0) {
         this.setPagamentoMensal(this.getPagamentoMensal() - this.desconto);
@@ -34,6 +35,6 @@ public class Casa extends Financiamento {
       }
     };
 
-    System.out.println("Desconto de " + desconto + " foi aplicado com sucesso");
+    System.out.println("Desconto de " + desconto + " reais foi aplicado com sucesso.");
   }
 }

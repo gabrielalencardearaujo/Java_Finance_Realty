@@ -9,18 +9,45 @@ public class Main {
     public static Scanner input = new Scanner(System.in);
     public static ArrayList<Financiamento> financiamentos = new ArrayList<Financiamento>();
     public static double totalFinanciamentos, totalImoveis;
+
     public static void main(String[] args) {
+        String control;
+        InterfaceUsuario user = new util.InterfaceUsuario();
+
         System.out.println("Bem vindo ao Sistema de financiamento de Imoveis: \n");
-        String controlador;
 
         do {
-            System.out.println("Insira os dados abaixo \n");
-            Financiamento fin = startApp();
-            financiamentos.add(fin);
+            System.out.println("Que tipo de financiamento deseja realizar? Temos 3 tipos de financiamento: ");
+            System.out.println("1. CASA");
+            System.out.println("2. APARTAMENTO");
+            System.out.println("3. TERRENO");
+            String escolhaFinanciamento = input.next();
             
-            System.out.print("\nGostaria de simular um financiamento? Y/N  ");
-            controlador = input.nextLine().toUpperCase();
-        } while (controlador.equals("Y"));
+            double valorImovel = user.inputValorImovel();
+            int prazoFinanciamento = user.inputPrazoFinanciamento();
+            double taxaJuros = user.inputTaxaJuros(); 
+
+            switch(escolhaFinanciamento){
+                case "1":
+                    Casa finCasa = new Casa(valorImovel, prazoFinanciamento, taxaJuros);
+                    financiamentos.add(finCasa);
+                    break;
+
+                case "2":
+                    Apartamento finApartamento = new Apartamento(valorImovel, prazoFinanciamento, taxaJuros);
+                    financiamentos.add(finApartamento);
+                    break;
+
+                case "3":
+                    Terreno finTerreno = new Terreno(valorImovel, prazoFinanciamento, taxaJuros);
+                    financiamentos.add(finTerreno);
+                    break;
+            }
+            
+            System.out.print("\nGostaria fazer outro financiamento? Y/N  ");
+            control = input.next().toUpperCase();
+
+        } while (control.equals("Y"));
 
         int cont = 1;
         for(Financiamento fin: financiamentos) {
@@ -36,19 +63,4 @@ public class Main {
         System.out.println("Valor total dos financiamentos: R$" + totalFinanciamentos);
     }
 
-    public static Financiamento startApp(){
-        InterfaceUsuario user = new util.InterfaceUsuario();
-
-        System.out.println("Que tipo de financiamento deseja realizar? Temos 3 tipos de financiamento: ");
-        System.out.println("\nCASA - APARTAMENTO - TERRENO");
-
-        
-        double valorImovel = user.inputValorImovel();
-        int prazoFinanciamento = user.inputPrazoFinanciamento();
-        double taxaJuros = user.inputTaxaJuros();
-        
-        Financiamento financiamento = new modelo.Financiamento(valorImovel, prazoFinanciamento, taxaJuros);
-
-        return financiamento;
-    }
 }
