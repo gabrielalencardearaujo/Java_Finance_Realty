@@ -73,6 +73,12 @@ public class InterfaceUsuario implements InterUsuario {
         return andar;
     }
 
+    public String zonaTerreno(){
+        System.out.println("Qual a zona do terreno? (Residencial ou Comercial) ");
+        String zona = inputUser.next();
+        return zona;
+    }
+
     // public static void resultFinanciamento(double pagamentoMensal, double pagamentoTotal){
     //     System.out.println("\n O pagamento mensal do imovel: " + pagamentoMensal);
     //     System.out.println("O pagamento total do imovel: " + pagamentoTotal);

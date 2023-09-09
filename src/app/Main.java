@@ -46,7 +46,9 @@ public class Main {
                     break;
 
                 case "3":
-                    Terreno finTerreno = new Terreno(valorImovel, prazoFinanciamento, taxaJuros);
+                    String zona = user.zonaTerreno();
+
+                    Terreno finTerreno = new Terreno(valorImovel, prazoFinanciamento, taxaJuros, zona);
                     financiamentos.add(finTerreno);
                     break;
             }
