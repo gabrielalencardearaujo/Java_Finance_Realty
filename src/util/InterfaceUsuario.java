@@ -52,12 +52,26 @@ public class InterfaceUsuario implements InterUsuario {
         return area;
     }
 
-     public double areaCasaTerreno(){
+    public double areaCasaTerreno(){
         System.out.println("Qual a area do terreno? ");
         double area = inputUser.nextDouble();
         return area;
     }
 
+
+    public int vagasGaragemApartamento(){
+        System.out.println("Quantas vagas na garagem? ");
+        int vagas = inputUser.nextInt();
+
+        return vagas;
+    }
+
+    public int andarApartamento(){
+        System.out.println("Qual o andar do apartamento? ");
+        int andar = inputUser.nextInt();
+
+        return andar;
+    }
 
     // public static void resultFinanciamento(double pagamentoMensal, double pagamentoTotal){
     //     System.out.println("\n O pagamento mensal do imovel: " + pagamentoMensal);

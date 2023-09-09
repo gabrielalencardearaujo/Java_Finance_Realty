@@ -37,7 +37,11 @@ public class Main {
                     break;
 
                 case "2":
-                    Apartamento finApartamento = new Apartamento(valorImovel, prazoFinanciamento, taxaJuros);
+
+                    int vagas = user.vagasGaragemApartamento();
+                    int andar = user.andarApartamento();
+
+                    Apartamento finApartamento = new Apartamento(valorImovel, prazoFinanciamento, taxaJuros, vagas, andar);
                     financiamentos.add(finApartamento);
                     break;
 
