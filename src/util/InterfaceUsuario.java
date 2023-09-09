@@ -46,9 +46,22 @@ public class InterfaceUsuario implements InterUsuario {
         return taxaJuros;
     }
 
-    public static void resultFinanciamento(double pagamentoMensal, double pagamentoTotal){
-        System.out.println("\n O pagamento mensal do imovel: " + pagamentoMensal);
-        System.out.println("O pagamento total do imovel: " + pagamentoTotal);
-        System.out.println("");
+    public double areaCasaConstruida(){
+        System.out.println("Qual a area construida? ");
+        double area = inputUser.nextDouble();
+        return area;
     }
+
+     public double areaCasaTerreno(){
+        System.out.println("Qual a area do terreno? ");
+        double area = inputUser.nextDouble();
+        return area;
+    }
+
+
+    // public static void resultFinanciamento(double pagamentoMensal, double pagamentoTotal){
+    //     System.out.println("\n O pagamento mensal do imovel: " + pagamentoMensal);
+    //     System.out.println("O pagamento total do imovel: " + pagamentoTotal);
+    //     System.out.println("");
+    // }
 }

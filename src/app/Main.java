@@ -29,7 +29,10 @@ public class Main {
 
             switch(escolhaFinanciamento){
                 case "1":
-                    Casa finCasa = new Casa(valorImovel, prazoFinanciamento, taxaJuros);
+                    double areaConstruida = user.areaCasaConstruida();
+                    double areaTerreno = user.areaCasaTerreno();
+
+                    Casa finCasa = new Casa(valorImovel, prazoFinanciamento, taxaJuros, areaConstruida, areaTerreno);
                     financiamentos.add(finCasa);
                     break;
 

@@ -6,4 +6,6 @@ public class Terreno extends Financiamento {
     super(valorImovel, prazoFinanciamento, taxaJurosAnual);
     this.setValorFinanciamento(this.getValorFinanciamento() + (this.getValorFinanciamento() * 0.02));
   }
+
+  
 }

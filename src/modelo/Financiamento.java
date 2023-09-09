@@ -1,6 +1,6 @@
 package modelo;
 
-public class Financiamento implements InterFinanciamento {
+public abstract class Financiamento implements InterFinanciamento {
     protected double valorImovel, valorFinanciamento, amortizacao, taxaJurosMensal, pagamentoMensal, taxaJurosAnual;
     protected int prazoFinanciamento, mensalidadeAtual;
 

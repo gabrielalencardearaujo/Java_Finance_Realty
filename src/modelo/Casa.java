@@ -4,11 +4,14 @@ import java.util.Scanner;
 
 public class Casa extends Financiamento {
   Scanner input = new Scanner(System.in);
-  private float desconto; 
+  private double desconto, areaConstruida, areaTerreno; 
 
-  public Casa(double valorImovel, int prazoFinanciamento, double taxaJurosAnual) {
+  public Casa(double valorImovel, int prazoFinanciamento, double taxaJurosAnual, double areaConstruida, double areaTerreno) {
     super(valorImovel, prazoFinanciamento, taxaJurosAnual);
-    this.desconto = 0f;
+    this.setAreaTerreno(areaTerreno);
+    this.setAreaConstruida(areaConstruida);
+    this.desconto = 0;
+
     this.descontoParcela();
   }
 
@@ -36,5 +39,21 @@ public class Casa extends Financiamento {
     };
 
     System.out.println("Desconto de " + desconto + " reais foi aplicado com sucesso.");
+  }
+
+  public double getAreaTerreno(){
+    return this.areaTerreno;
+  }
+
+   public void setAreaTerreno(double areaTerreno){
+    this.areaTerreno = areaTerreno;
+  }
+
+    public double getAreaConstruida(){
+    return this.areaConstruida;
+  }
+
+   public void setAreaConstruida(double areaConstruida){
+    this.areaConstruida = areaConstruida;
   }
 }
