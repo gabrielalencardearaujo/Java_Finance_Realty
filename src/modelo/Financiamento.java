@@ -11,23 +11,32 @@ public abstract class Financiamento implements InterFinanciamento {
         this.mensalidadeAtual = 1;
         this.taxaJurosAnual = taxaJurosAnual;
         this.taxaJurosMensal = taxaJurosAnual / 12;
+
+        this.calcPagamentoMensal();
     }
 
     // Metodos Personalizados
     public double calcPagamentoMensal() {
         this.valorFinanciamento = this.getValorImovel() * this.getTaxaJurosAnual();
+
         this.setPagamentoMensal((this.getValorImovel() / this.getPrazoFinanciamento()) / (1 + (this.getTaxaJurosAnual() / 12)));
 
         return this.getPagamentoMensal();
     }
 
     public double totalPagamento() {
-        return this.calcPagamentoMensal() * this.getPrazoFinanciamento();
+        return this.getPagamentoMensal() * (this.getPrazoFinanciamento() * 12);
     }
 
     public void pagarMensalidade() {
         this.mensalidadeAtual++;
         System.out.println("Mensalidade " + this.getMensalidadeAtual() + "no valor de " + this.getPagamentoMensal() + "paga com sucesso n");
+    }
+
+    public void mostrarFinanciamentos(int cont) {
+        System.out.println("\nFinanciamento " + cont + ":" );
+        System.out.println("valor do Imovel: R$ " + this.getValorImovel());
+        System.out.println("Total do financiamento: R$" + this.totalPagamento()); 
     }
 
     // Metodos Especiais

@@ -11,33 +11,31 @@ public class Main {
     public static double totalFinanciamentos, totalImoveis;
 
     public static void main(String[] args) {
-        String control;
+        String control = "";
         InterfaceUsuario user = new util.InterfaceUsuario();
-
         System.out.println("Bem vindo ao Sistema de financiamento de Imoveis: \n");
 
         do {
-            System.out.println("Que tipo de financiamento deseja realizar? Temos 3 tipos de financiamento: ");
-            System.out.println("1. CASA");
-            System.out.println("2. APARTAMENTO");
-            System.out.println("3. TERRENO");
-            String escolhaFinanciamento = input.next();
-            
+            String escolhaFinanciamento = user.presentation();
+
             double valorImovel = user.inputValorImovel();
             int prazoFinanciamento = user.inputPrazoFinanciamento();
             double taxaJuros = user.inputTaxaJuros(); 
 
-            switch(escolhaFinanciamento){
-                case "1":
+            switch(escolhaFinanciamento.toUpperCase()){
+                case "CASA":
                     double areaConstruida = user.areaCasaConstruida();
                     double areaTerreno = user.areaCasaTerreno();
+                    float desconto = user.descontoCasa();
 
                     Casa finCasa = new Casa(valorImovel, prazoFinanciamento, taxaJuros, areaConstruida, areaTerreno);
-                    financiamentos.add(finCasa);
+
+                    boolean checkDesconto = finCasa.verificaDesconto(desconto);
+
+                    if(checkDesconto) financiamentos.add(finCasa);
+                    
                     break;
-
-                case "2":
-
+                case "APARTAMENTO":
                     int vagas = user.vagasGaragemApartamento();
                     int andar = user.andarApartamento();
 
@@ -45,12 +43,15 @@ public class Main {
                     financiamentos.add(finApartamento);
                     break;
 
-                case "3":
+                case "TERRENO":
                     String zona = user.zonaTerreno();
 
                     Terreno finTerreno = new Terreno(valorImovel, prazoFinanciamento, taxaJuros, zona);
                     financiamentos.add(finTerreno);
                     break;
+                    
+                default:
+                    System.out.println("Escolha uma das opcoes corretamente.");
             }
             
             System.out.print("\nGostaria fazer outro financiamento? Y/N  ");
@@ -58,18 +59,6 @@ public class Main {
 
         } while (control.equals("Y"));
 
-        int cont = 1;
-        for(Financiamento fin: financiamentos) {
-            System.out.println("\nFinanciamento " + cont + " - valor do Imovel: R$" + fin.getValorImovel() + ", valor total do financiamento: R$" + fin.totalPagamento());
-
-            totalImoveis += fin.getValorImovel();
-            totalFinanciamentos += fin.totalPagamento();
-
-            cont++;
-        }
-
-        System.out.println("\nValor total dos imoveis: R$" + totalImoveis);
-        System.out.println("Valor total dos financiamentos: R$" + totalFinanciamentos);
+        user.mostrarFinanciamentos(financiamentos);
     }
-
 }

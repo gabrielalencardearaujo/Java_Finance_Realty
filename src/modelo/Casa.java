@@ -12,33 +12,34 @@ public class Casa extends Financiamento {
     this.setAreaConstruida(areaConstruida);
     this.desconto = 0;
 
-    this.descontoParcela();
+    // this.descontoParcela();
   }
 
-  public void descontoParcela() {
-    String controlador;
+  public boolean verificaDesconto(float desconto) {
+    if(desconto > 100 || desconto < 0) {
+      System.out.println("Desconto deve estar entre 0 e 100 reais.");
+      return false;
+    }
+    
+    if(desconto > super.pagamentoMensal) {
+      System.out.println("O desconto nao pode ser maior que " + super.pagamentoMensal);
+      return false;
+    }
 
-    while (true) {
+    this.desconto = desconto;
+    super.setPagamentoMensal(super.getPagamentoMensal() - this.desconto);
 
-      System.out.print("\nDeseja aplicar algum desconto nas mensalidades do financiamento da casa? S/N  ");
-      controlador = input.next().toUpperCase();
+    System.out.println("Desconto aplicado com sucesso");
+    return true; 
+  }
 
-      if (controlador.equals("S")) {
-        System.out.println("Quanto é o desconto: (ate 100 reais) ");
-        this.desconto = input.nextFloat();
-      } else return;
-      
-
-      if (this.desconto < 100 && this.desconto > 0) {
-        this.setPagamentoMensal(this.getPagamentoMensal() - this.desconto);
-        break;
-      } else {
-        System.out.println("O desconto deve ser de ate 100 reais!");
-        continue;
-      }
-    };
-
-    System.out.println("Desconto de " + desconto + " reais foi aplicado com sucesso.");
+  @Override
+  public void mostrarFinanciamentos(int cont) {
+    super.mostrarFinanciamentos(cont);  
+    System.out.println("Area do terreno: " + this.getAreaTerreno());
+    System.out.println("Area construida: " + this.getAreaConstruida());
+    System.out.println("Valor do desconto: " + this.desconto);
+    System.out.println("Valor da mensalidade: " + super.getPagamentoMensal());
   }
 
   public double getAreaTerreno(){
