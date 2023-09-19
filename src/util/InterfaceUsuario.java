@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import modelo.Financiamento;
 import java.text.DecimalFormat;
-import modelo.*;
 
 public class InterfaceUsuario implements InterUsuario {
     private Scanner inputUser = new Scanner(System.in);
@@ -20,10 +19,8 @@ public class InterfaceUsuario implements InterUsuario {
             if (valorImovel > 0)
                 break;
 
-            System.out.println("O valor deve ser maior que zero.\n");
+            throw new Error("O valor deve ser maior que zero.\n");
         }
-        ;
-
         return valorImovel;
     }
 
@@ -105,7 +102,11 @@ public class InterfaceUsuario implements InterUsuario {
     public String zonaTerreno() {
         System.out.println("Qual a zona do terreno? (Residencial ou Comercial) ");
         String zona = inputUser.next();
-        return zona;
+
+        if(zona.toUpperCase().equals("RESIDENCIAL") || zona.toUpperCase().equals("COMERCIAL"))
+            return zona;
+        else
+            throw new Error("Digite uma das duas Opcoes: Comercial ou Residencial");
     }
 
     public String presentation() {
@@ -157,11 +158,4 @@ public class InterfaceUsuario implements InterUsuario {
         System.out.println("\nValor total dos imoveis: R$ " + this.df.format(totalImoveis));
         System.out.println("Valor total dos financiamentos: R$ " + this.df.format(totalFinanciamentos));
     }
-
-    // public static void resultFinanciamento(double pagamentoMensal, double
-    // pagamentoTotal){
-    // System.out.println("\n O pagamento mensal do imovel: " + pagamentoMensal);
-    // System.out.println("O pagamento total do imovel: " + pagamentoTotal);
-    // System.out.println("");
-    // }
 }
