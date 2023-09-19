@@ -2,11 +2,12 @@ package util;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-
 import modelo.Financiamento;
+import java.text.DecimalFormat;
 
 public class InterfaceUsuario implements InterUsuario {
     private Scanner inputUser = new Scanner(System.in);
+    private DecimalFormat df = new DecimalFormat("#.##");
 
     public double inputValorImovel() {
         double valorImovel = 0;
@@ -133,17 +134,16 @@ public class InterfaceUsuario implements InterUsuario {
         int cont = 1;
         double totalImoveis = 0;
         double totalFinanciamentos = 0;
+
         for(Financiamento fin: financiamentos) {
             fin.mostrarFinanciamentos(cont);
-            
             totalImoveis += fin.getValorImovel();
             totalFinanciamentos += fin.totalPagamento();
-
             cont++;
         }
 
-        System.out.println("\nValor total dos imoveis: R$" + totalImoveis);
-        System.out.println("Valor total dos financiamentos: R$" + totalFinanciamentos);
+        System.out.println("\nValor total dos imoveis: R$ " + this.df.format(totalImoveis));
+        System.out.println("Valor total dos financiamentos: R$ " + this.df.format(totalFinanciamentos));
     }
 
     // public static void resultFinanciamento(double pagamentoMensal, double

@@ -1,8 +1,10 @@
 package modelo;
+import java.text.DecimalFormat;
 
 public abstract class Financiamento implements InterFinanciamento {
     protected double valorImovel, valorFinanciamento, amortizacao, taxaJurosMensal, pagamentoMensal, taxaJurosAnual;
     protected int prazoFinanciamento, mensalidadeAtual;
+    protected DecimalFormat df = new DecimalFormat("#.##");
 
     // Contructor
     public Financiamento(double valorImovel, int prazoFinanciamento, double taxaJurosAnual) {
@@ -34,9 +36,10 @@ public abstract class Financiamento implements InterFinanciamento {
     }
 
     public void mostrarFinanciamentos(int cont) {
+        
         System.out.println("\nFinanciamento " + cont + ":" );
         System.out.println("valor do Imovel: R$ " + this.getValorImovel());
-        System.out.println("Total do financiamento: R$" + this.totalPagamento()); 
+        System.out.println("Total do financiamento: R$ " + this. df.format(this.totalPagamento())); 
     }
 
     // Metodos Especiais

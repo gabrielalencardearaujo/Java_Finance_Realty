@@ -7,13 +7,27 @@ public class Apartamento extends Financiamento {
     super(valorImovel, prazoFinanciamento, taxaJurosAnual);
     this.setVagasGaragem(vagasGaragem);
     this.setAndarApartamento(andarApartamento);
-    this.recalculoTaxaAnual();
   }
 
-  private void recalculoTaxaAnual() {
-    double novaTaxaRecalculada = (this.getTaxaJurosMensal() * 12) - (1 / (this.getMensalidadeAtual() * 12));
-    this.setTaxaJurosAnual(novaTaxaRecalculada);
+  @Override
+  public double totalPagamento(){
+    double valorTotalPagamento = 0;
+    for (int i = 1; i <= super.getPrazoFinanciamento() *12; i++) {
+      valorTotalPagamento +=
+        this.pagamentoMensal + (this.pagamentoMensal * (1 / i / 100));
+    }
+    return valorTotalPagamento;
   }
+
+  @Override
+  public void mostrarFinanciamentos(int cont) {
+    super.mostrarFinanciamentos(cont);  
+    System.out.println("Vagas na Garagem: " + this.getVagasGaragem());
+    System.out.println("Andar do Apartamento: " + this.getAndarApartamento());
+    System.out.println("Valor da mensalidade: " + this.df.format(super.getPagamentoMensal()));
+  }
+
+  //Getters e Setters:
 
   public int getVagasGaragem() {
     return vagasGaragem;
