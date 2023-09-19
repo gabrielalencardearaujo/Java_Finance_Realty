@@ -39,7 +39,7 @@ public class Casa extends Financiamento {
     System.out.println("Area do terreno: " + this.getAreaTerreno());
     System.out.println("Area construida: " + this.getAreaConstruida());
     System.out.println("Valor do desconto: " + this.desconto);
-    System.out.println("Valor da mensalidade: " + super.getPagamentoMensal());
+    System.out.println("Valor da mensalidade: " + this.df.format(super.getPagamentoMensal()));
   }
 
   public double getAreaTerreno(){

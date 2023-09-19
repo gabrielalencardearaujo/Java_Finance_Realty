@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import modelo.Financiamento;
 import java.text.DecimalFormat;
+import modelo.*;
 
 public class InterfaceUsuario implements InterUsuario {
     private Scanner inputUser = new Scanner(System.in);
@@ -136,6 +137,17 @@ public class InterfaceUsuario implements InterUsuario {
         double totalFinanciamentos = 0;
 
         for(Financiamento fin: financiamentos) {
+            System.out.println("\n\nFinanciamento " + cont + ":" );
+
+            if (fin.getClass().getSimpleName().equals("Casa")) 
+                System.out.println("\nTipo do Financiamento: CASA");
+
+            if(fin.getClass().getSimpleName().equals("Apartamento"))
+                System.out.println("\nTipo do Financiamento: APARTAMENTO");
+            
+            if(fin.getClass().getSimpleName().equals("Apartamento"))
+                System.out.println("\nTipo do Financiamento: Terreno");
+
             fin.mostrarFinanciamentos(cont);
             totalImoveis += fin.getValorImovel();
             totalFinanciamentos += fin.totalPagamento();

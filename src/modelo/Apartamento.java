@@ -22,9 +22,9 @@ public class Apartamento extends Financiamento {
   @Override
   public void mostrarFinanciamentos(int cont) {
     super.mostrarFinanciamentos(cont);  
+    System.out.println("-> Tipo do Financiamento: APARTAMENTO <-");
     System.out.println("Vagas na Garagem: " + this.getVagasGaragem());
     System.out.println("Andar do Apartamento: " + this.getAndarApartamento());
-    System.out.println("Valor da mensalidade: " + this.df.format(super.getPagamentoMensal()));
   }
 
   //Getters e Setters:
