@@ -2,6 +2,7 @@ package app;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import app.modelo.*;
 import app.util.*;
@@ -13,9 +14,38 @@ public class Main {
     
 
     public static void main(String[] args) throws IOException {
+        System.out.println("Bem vindo ao Sistema de financiamento de Imoveis: \n");
+        
+        try {
+            System.out.println("Seleciona uma das opcoes: \n");
+            System.out.println("1 - Novo Financiamento");
+            System.out.println("2 - Consultar Financiamentos");
+            int choice = input.nextInt();
+
+            switch(choice) {
+                case 1:
+                    Main.novosFinanciamentos();
+                    break;
+                case 2:
+                    Main.mostrarFinanciamentosAnteriores(ModelDB.getDatabase());
+                    break;
+                default:
+                    System.out.println("Escolha uma das opcoes acima.");
+            }
+        } catch(Exception err) {
+            System.out.println("Escolha uma opcao valida.");
+            System.out.println(err);
+        }
+
+
+        for(int i = 0; i < financiamentos.size(); i++) {
+            ModelDB.setDatabase(financiamentos.get(i).mostrarFinanciamentos(i + 1));
+        }
+    }
+
+    public static void novosFinanciamentos() {
         String control = "";
         InterfaceUsuario user = new app.util.InterfaceUsuario();
-        System.out.println("Bem vindo ao Sistema de financiamento de Imoveis: \n");
         do {
                 try {
                 String escolhaFinanciamento = user.presentation();
@@ -72,9 +102,15 @@ public class Main {
         user.mostrarFinanciamentos(financiamentos);
             
         } while (control.equals("Y"));
+    }
 
-        for(int i = 0; i < financiamentos.size(); i++) {
-            ModelDB.setDatabase(financiamentos.get(i).mostrarFinanciamentos(i + 1));
+    public static void mostrarFinanciamentosAnteriores(List<String> database) {
+        if(database.size() > 0){
+            for(String fin: database) {
+                System.out.println(fin);
+            }
+        } else {
+            System.out.println("Nenhum financiamento foi encontrado");
         }
     }
 }
