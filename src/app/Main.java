@@ -1,15 +1,18 @@
 package app;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import app.modelo.*;
 import app.util.*;
+import model.ModelDB;
 
 public class Main {
     public static Scanner input = new Scanner(System.in);
-    public static ArrayList<Financiamento> financiamentos = new ArrayList<Financiamento>();
+    public static ArrayList<InterFinanciamento> financiamentos = new ArrayList<InterFinanciamento>();
+    
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         String control = "";
         InterfaceUsuario user = new app.util.InterfaceUsuario();
         System.out.println("Bem vindo ao Sistema de financiamento de Imoveis: \n");
@@ -59,12 +62,19 @@ public class Main {
                 System.out.print("\nGostaria fazer outro financiamento? Y/N  ");
                 control = input.next().toUpperCase();
 
+                if(control.equals("Y")) continue;
+                
             } catch (Exception e) {
                 System.out.println(e.getMessage());
                 continue;
-            } finally {
-                user.mostrarFinanciamentos(financiamentos);
-            }
+            } 
+
+        user.mostrarFinanciamentos(financiamentos);
+            
         } while (control.equals("Y"));
+
+        for(int i = 0; i < financiamentos.size(); i++) {
+            ModelDB.setDatabase(financiamentos.get(i).mostrarFinanciamentos(i + 1));
+        }
     }
 }

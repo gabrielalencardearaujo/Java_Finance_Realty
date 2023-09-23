@@ -35,9 +35,10 @@ public abstract class Financiamento implements InterFinanciamento {
         System.out.println("Mensalidade " + this.getMensalidadeAtual() + "no valor de " + this.getPagamentoMensal() + "paga com sucesso n");
     }
 
-    public void mostrarFinanciamentos(int cont) {
-        System.out.println("valor do Imovel: R$ " + this.getValorImovel());
-        System.out.println("Total do financiamento: R$ " + this. df.format(this.totalPagamento())); 
+    public String mostrarFinanciamentos(int cont) {
+        return 
+            "valor do Imovel: R$ " + this.getValorImovel() + 
+            "\nTotal do financiamento: R$ " + this. df.format(this.totalPagamento()); 
     }
 
     // Metodos Especiais

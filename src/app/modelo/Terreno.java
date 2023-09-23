@@ -10,11 +10,18 @@ public class Terreno extends Financiamento {
     this.setValorFinanciamento(this.getValorFinanciamento() + (this.getValorFinanciamento() * 0.02));
   }
 
+  @Override 
+  public String mostrarFinanciamentos(int cont) {
+    return 
+      super.mostrarFinanciamentos(cont) + 
+      "\nTipo de Terreno: " + this.getZona();
+  }
+
   public String getZona() {
     return zona;
   }
 
   public void setZona(String zona) {
-    this.zona = zona;
+    this.zona = zona.toUpperCase();
   }
 }

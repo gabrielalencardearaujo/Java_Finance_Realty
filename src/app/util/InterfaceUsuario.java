@@ -2,7 +2,8 @@ package app.util;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-import app.modelo.Financiamento;
+import app.modelo.InterFinanciamento;
+
 import java.text.DecimalFormat;
 
 public class InterfaceUsuario implements InterUsuario {
@@ -75,10 +76,8 @@ public class InterfaceUsuario implements InterUsuario {
                 return inputUser.nextFloat();
                 } else return 0f;
 
-            } catch(NullPointerException e){
+            } catch(Exception e){
                 System.out.println(e.getMessage());
-                continue;
-            }catch(RuntimeException e) {
                 System.out.println("Algo inesperado aconteceu aqui. Tente novamente.");
                 continue;
             }
@@ -122,22 +121,20 @@ public class InterfaceUsuario implements InterUsuario {
                     throw new RuntimeException("\nDigite uma das opcoes abaixo. Exemplo: Casa");
 
                 return escolhaFinanciamento;
-            } catch (NullPointerException e) {
+            } catch (Exception e) {
                 System.out.println("Digite um valor valido.");
-                continue;
-            } catch (RuntimeException e) {
                 System.out.println(e.getMessage());
                 continue;
             }
         }
     }
 
-    public void mostrarFinanciamentos(ArrayList<Financiamento> financiamentos) {
+    public void mostrarFinanciamentos(ArrayList<InterFinanciamento> financiamentos) {
         int cont = 1;
         double totalImoveis = 0;
         double totalFinanciamentos = 0;
 
-        for(Financiamento fin: financiamentos) {
+        for(InterFinanciamento fin: financiamentos) {
             System.out.println("\n\nFinanciamento " + cont + ":" );
 
             if (fin.getClass().getSimpleName().equals("Casa")) 
@@ -149,7 +146,7 @@ public class InterfaceUsuario implements InterUsuario {
             if(fin.getClass().getSimpleName().equals("Apartamento"))
                 System.out.println("\nTipo do Financiamento: Terreno");
 
-            fin.mostrarFinanciamentos(cont);
+            System.out.println(fin.mostrarFinanciamentos(cont));
             totalImoveis += fin.getValorImovel();
             totalFinanciamentos += fin.totalPagamento();
             cont++;

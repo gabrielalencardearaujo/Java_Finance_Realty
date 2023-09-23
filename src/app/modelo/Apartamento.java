@@ -20,11 +20,11 @@ public class Apartamento extends Financiamento {
   }
 
   @Override
-  public void mostrarFinanciamentos(int cont) {
-    super.mostrarFinanciamentos(cont);  
-    System.out.println("-> Tipo do Financiamento: APARTAMENTO <-");
-    System.out.println("Vagas na Garagem: " + this.getVagasGaragem());
-    System.out.println("Andar do Apartamento: " + this.getAndarApartamento());
+  public String mostrarFinanciamentos(int cont) {
+    return super.mostrarFinanciamentos(cont) +
+    "\n-> Tipo do Financiamento: APARTAMENTO <-" +
+    "\nVagas na Garagem: " + this.getVagasGaragem() +
+    "\nAndar do Apartamento: " + this.getAndarApartamento();
   }
 
   //Getters e Setters:

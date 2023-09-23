@@ -34,12 +34,13 @@ public class Casa extends Financiamento {
   }
 
   @Override
-  public void mostrarFinanciamentos(int cont) {
-    super.mostrarFinanciamentos(cont);  
-    System.out.println("Area do terreno: " + this.getAreaTerreno());
-    System.out.println("Area construida: " + this.getAreaConstruida());
-    System.out.println("Valor do desconto: " + this.desconto);
-    System.out.println("Valor da mensalidade: " + this.df.format(super.getPagamentoMensal()));
+  public String mostrarFinanciamentos(int cont) {
+    return 
+      super.mostrarFinanciamentos(cont) + 
+      "\nArea do terreno: " + this.getAreaTerreno() +
+      "\nArea construida: " + this.getAreaConstruida() +
+      "\nValor do desconto: " + this.desconto +
+      "\nValor da mensalidade: " + this.df.format(super.getPagamentoMensal());
   }
 
   public double getAreaTerreno(){

@@ -10,4 +10,5 @@ public interface InterFinanciamento {
   public abstract void setPrazoFinanciamento(int var);
   public abstract void setValorImovel(double var);
   public abstract void setTaxaJurosAnual(double var);
+  public abstract String mostrarFinanciamentos(int cont);
 }
