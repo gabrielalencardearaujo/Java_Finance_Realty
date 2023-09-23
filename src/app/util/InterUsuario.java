@@ -1,4 +1,4 @@
-package util;
+package app.util;
 
 public interface InterUsuario {
   public abstract int inputPrazoFinanciamento();

@@ -1,4 +1,4 @@
-package modelo;
+package app.modelo;
 import java.text.DecimalFormat;
 
 public abstract class Financiamento implements InterFinanciamento {

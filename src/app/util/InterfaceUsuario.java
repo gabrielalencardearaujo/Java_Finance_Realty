@@ -1,8 +1,8 @@
-package util;
+package app.util;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-import modelo.Financiamento;
+import app.modelo.Financiamento;
 import java.text.DecimalFormat;
 
 public class InterfaceUsuario implements InterUsuario {

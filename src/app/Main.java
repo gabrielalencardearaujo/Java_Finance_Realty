@@ -2,8 +2,8 @@ package app;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-import modelo.*;
-import util.*;
+import app.modelo.*;
+import app.util.*;
 
 public class Main {
     public static Scanner input = new Scanner(System.in);
@@ -11,7 +11,7 @@ public class Main {
 
     public static void main(String[] args) {
         String control = "";
-        InterfaceUsuario user = new util.InterfaceUsuario();
+        InterfaceUsuario user = new app.util.InterfaceUsuario();
         System.out.println("Bem vindo ao Sistema de financiamento de Imoveis: \n");
         do {
                 try {

@@ -1,4 +1,4 @@
-package modelo;
+package app.modelo;
 
 public interface InterFinanciamento {
   public abstract double calcPagamentoMensal();

@@ -1,4 +1,4 @@
-package modelo;
+package app.modelo;
 
 public class Apartamento extends Financiamento {
   private int vagasGaragem, andarApartamento;
