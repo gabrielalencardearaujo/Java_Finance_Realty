@@ -55,7 +55,7 @@ public class Casa extends Financiamento {
     return this.areaConstruida;
   }
 
-   public void setAreaConstruida(double areaConstruida){
+  public void setAreaConstruida(double areaConstruida){
     this.areaConstruida = areaConstruida;
   }
 }
